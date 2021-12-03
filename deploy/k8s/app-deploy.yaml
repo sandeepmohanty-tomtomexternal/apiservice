@@ -19,13 +19,25 @@ spec:
         image: jaibw/api
         ports:
         - containerPort: 8081 
-        envFrom:
-          - configMapRef:
-              name: app-config
         env: 
         - name: DBPASS
           valueFrom:
             secretKeyRef:
               name: app-secret
               key: password
+        - name: DBUSER
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: DBUSER
+        - name: DBHOST
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: DBHOST
+        - name: DBPORT
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: DBPORT
         
