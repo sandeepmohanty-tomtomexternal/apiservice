@@ -45,3 +45,7 @@ spec:
             configMapKeyRef:
               name: app-config
               key: DBNAME
+  
+   
+   
+  DBUSER: postgres
