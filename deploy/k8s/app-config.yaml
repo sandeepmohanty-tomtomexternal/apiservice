@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+  namespace: production
+data:
+  DBNAME: "postgres"
+  DBUSER: "postgres"
+  DBHOST: "db-svc"
+  DBPORT: "5432"

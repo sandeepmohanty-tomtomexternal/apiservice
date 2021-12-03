@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deploy
+  namespace: production
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-deploy
+  template:
+    metadata:
+      name: app-deploy
+      labels:
+        app: app-deploy
+    spec:
+      containers:
+      - name: app
+        image: jaibw/api
+        ports:
+        - containerPort: 8081 
+        envFrom:
+          - configMapRef:
+              name: app-config
+        env: 
+        - name: DBPASS
+          valueFrom:
+            secretKeyRef:
+              name: app-secret
+              key: password
+        
