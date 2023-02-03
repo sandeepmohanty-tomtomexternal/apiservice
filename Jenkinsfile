@@ -21,7 +21,7 @@ pipeline {
         stage('docker Build') {
             steps {
                 sh 'cp target/OnlineVotingSystem-0.0.1-SNAPSHOT.jar deploy/OnlineVotingSystem-0.0.1-SNAPSHOT.jar'
-                sh "cd deploy && docker build -t jaibw/apidemo:${env.BUILD_NUMBER} ."
+                sh "cd deploy && docker build -t sandeepkmohanty/apidemo:${env.BUILD_NUMBER} ."
             }
         }
         
@@ -33,7 +33,7 @@ pipeline {
         
          stage('docker Upload') {
             steps {
-                sh "docker push jaibw/apidemo:${env.BUILD_NUMBER}"
+                sh "docker push sandeepkmohanty/apidemo:${env.BUILD_NUMBER}"
             }
         }
          
